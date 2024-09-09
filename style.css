@@ -1,15 +1,42 @@
 .container {
     display: flex;
+    flex-direction: column;
     height: 100vh;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
 }
 
 .header {
     display: flex;
     height: 5vw;
     width: 100%;
-    justify-content: center;
+    justify-content:start;
     align-items: center;
     font-weight: 800;
-    background-color: blue;
+    font-size: 2rem;
+    background-color: #8ecae6;
     color: white;
+    gap: 10px;
+    /* padding-left: 2rem; */
+}
+
+.body {
+    height: 90vw;
+    width: 100%;
+    background-color: #fb8500;
+}
+
+.footer {
+    display: flex;
+    height: 5vw;
+    width: 100%;
+    background-color: #023047;
+}
+
+img {
+    height: 80%;
+    margin-left: 50px;
 }
