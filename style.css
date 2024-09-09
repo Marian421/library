@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
+    
 }
 
 html, body {
@@ -11,7 +12,7 @@ html, body {
 
 .header {
     display: flex;
-    height: 5vw;
+    height: 50px;
     width: 100%;
     justify-content:start;
     align-items: center;
@@ -21,17 +22,19 @@ html, body {
     color: white;
     gap: 10px;
     /* padding-left: 2rem; */
+    
 }
 
 .body {
-    height: 90vw;
+    height: auto;
     width: 100%;
     background-color: #fb8500;
+    flex-grow: 1;
 }
 
 .footer {
     display: flex;
-    height: 5vw;
+    height: 40px;
     width: 100%;
     background-color: #023047;
 }
@@ -39,4 +42,55 @@ html, body {
 img {
     height: 80%;
     margin-left: 50px;
+}
+
+.addBook {
+    margin-left: auto;
+    margin-right: clamp(50px, 5vw, 100px);
+    background-color: #8ecae6;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.5rem;
+    font-weight: 800;
+    height: 90%;
+    border-radius: 9px;
+}
+
+.addBook:hover {
+    background-color:#417d99;
+    cursor: pointer;
+}
+
+input:focus {
+    border: 3px solid #ffb703;
+    outline: none;
+}
+
+input {
+    overflow: hidden;
+    height: 30px;
+    width: 80%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    width: auto;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+dialog {
+    background-color: #8ecae6;
+    width: 40%;
+    height: 40%;
+}
+
+::backdrop {
+    background: rgb(0, 0, 0, 40%);
 }

@@ -1,4 +1,16 @@
 const MyLibrary = [];
+const showDialog = document.querySelector(".addBook");
+const dialog = document.getElementById("dialog");
+const jsCloseButton = document.querySelector("#js-close");
+
+showDialog.addEventListener("click", () => {
+    dialog.showModal();
+})
+
+jsCloseButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    dialog.close();
+})
 
 function Book(name, author, numberOfPages, read) {
     this.name = name;
