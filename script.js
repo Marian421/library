@@ -2,6 +2,9 @@ const MyLibrary = [];
 const showDialog = document.querySelector(".addBook");
 const dialog = document.getElementById("dialog");
 const jsCloseButton = document.querySelector("#js-close");
+const addUserBook = document.querySelector("#add");
+const bookTitle = document.querySelector("#name");
+const haveRead = document.querySelector("#haveRead");
 
 showDialog.addEventListener("click", () => {
     dialog.showModal();
@@ -10,6 +13,15 @@ showDialog.addEventListener("click", () => {
 jsCloseButton.addEventListener('click', (e) => {
     e.preventDefault();
     dialog.close();
+})
+
+addUserBook.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (haveRead.checked) {
+        console.log("checked");
+    } else {
+        console.log("uncheked");
+    }
 })
 
 function Book(name, author, numberOfPages, read) {
