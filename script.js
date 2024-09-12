@@ -5,6 +5,10 @@ const jsCloseButton = document.querySelector("#js-close");
 const addUserBook = document.querySelector("#add");
 const bookTitle = document.querySelector("#name");
 const haveRead = document.querySelector("#haveRead");
+const author = document.querySelector("#author");
+const pages = document.querySelector("#pages");
+const content = document.querySelector(".content");
+
 
 showDialog.addEventListener("click", () => {
     dialog.showModal();
@@ -12,23 +16,33 @@ showDialog.addEventListener("click", () => {
 
 jsCloseButton.addEventListener('click', (e) => {
     e.preventDefault();
+    clearInputs();
     dialog.close();
 })
 
 addUserBook.addEventListener('click', (e) => {
     e.preventDefault();
-    if (haveRead.checked) {
-        console.log("checked");
-    } else {
-        console.log("uncheked");
-    }
+    let read = haveRead.checked ? "read" : "unread";
+    let index = MyLibrary.length;
+    MyLibrary.push(new Book(
+        bookTitle.value,
+        author.value,
+        pages.value,
+        read,
+        index
+    ))
+    addBooksToLibrary();
+    showNewBook();
+    clearInputs();
+    dialog.close();
 })
 
-function Book(name, author, numberOfPages, read) {
+function Book(name, author, numberOfPages, read, index) {
     this.name = name;
     this.author = author;
     this.numberOfPages = numberOfPages;
     this.read = read;
+    this.index = index;
     this.info = function() {
         return name + ' ' + author;
     }
@@ -37,17 +51,27 @@ let book;
 function addBooksToLibrary() {
     for (let i = 0; i < MyLibrary.length; i++) {
         book = MyLibrary[i];
-        console.log(book.name);
+        console.log(book);
+    }
+}
+function clearInputs() {
+    bookTitle.value = "";
+    author.value = "";
+    pages.value = "";
+    if(haveRead.checked){
+        haveRead.checked = false;
     }
 }
 
-let harryPotter = new Book("Harry Potter", "J.K Rowling", "500", true);
-MyLibrary.push(harryPotter);
-console.log(MyLibrary);
+function showNewBook() {
+    let name = MyLibrary[MyLibrary.length - 1].name;
+    let author = MyLibrary[MyLibrary.length - 1].name;
+    let numberOfPages = MyLibrary[MyLibrary.length - 1].numberOfPages;
+    let read = MyLibrary[MyLibrary.length - 1].read;
+    const card = document.createElement('div');
+    card.classList.add('card');
+    content.appendChild(card);
+}
 
-let noLongerHuman = new Book("No Longer Human", "Osamu Dazai", "390", true);
-MyLibrary.push(noLongerHuman);
 
-console.log(MyLibrary);
-addBooksToLibrary();
 
