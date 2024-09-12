@@ -45,9 +45,69 @@ input {
     height: 330px;
     min-height: 0;
     min-width: 0;
-   
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
 }
 
+.title {
+    grid-column: 1/3;
+    grid-row: 1/2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #c1121f;
+    color: white;
+    font-weight: 800;
+    font-size: 1.4em;
+}
+
+.author {
+    grid-column: 1/3;
+    grid-row: 2/3;
+}
+
+
+.pages {
+    align-items: end;
+}
+
+.read,
+.author,
+.pages {
+    color: white;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1em;
+    padding-left: 5px;
+}
+
+.deleteBook {
+    font-size: 1.5em;
+    background-color:#fdf0d5;
+    color: #c1121f;
+    font-weight: 800;
+    grid-row: 4/5;
+    grid-column: 2/3;
+    border: none;
+}
+
+.deleteBook:hover {
+    cursor: pointer;
+    background-color: #000000;
+}
+
+.read {
+    grid-row: 4/5;
+    grid-column: 1/2;
+    justify-content: center;
+    background-color: #fdf0d5;
+    color: #023047;
+    justify-content: start;
+    font-weight: 800;
+    font-size: 1.5em;
+}
 .footer {
     display: flex;
     height: 40px;
@@ -137,6 +197,12 @@ input[type="radio"] {
     font-weight: 800;    
     border: none;
     background-color: #023047;
+    cursor: pointer;
+}
+
+#add:hover,
+#js-close:hover {
+    border: solid 2px #000000;
 }
 
 #js-close {
@@ -148,6 +214,7 @@ input[type="radio"] {
     font-size: 1.5rem;
     font-weight: 800;    
     border: none;
+    cursor: pointer;
 }
 
 dialog {
@@ -176,6 +243,7 @@ input[type="checkbox"] {
     width: 30px;
     margin-left: 15px;
     margin-right: 3px;
+    cursor: pointer;
 }
 
 .dialog-content {

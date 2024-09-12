@@ -22,14 +22,15 @@ jsCloseButton.addEventListener('click', (e) => {
 
 addUserBook.addEventListener('click', (e) => {
     e.preventDefault();
-    let read = haveRead.checked ? "read" : "unread";
+    let read = haveRead.checked ? "Read" : "Not read";
     let index = MyLibrary.length;
     MyLibrary.push(new Book(
         bookTitle.value,
         author.value,
         pages.value,
         read,
-        index
+        index, 
+        true
     ))
     addBooksToLibrary();
     showNewBook();
@@ -37,12 +38,13 @@ addUserBook.addEventListener('click', (e) => {
     dialog.close();
 })
 
-function Book(name, author, numberOfPages, read, index) {
+function Book(name, author, numberOfPages, read, index, shown) {
     this.name = name;
     this.author = author;
     this.numberOfPages = numberOfPages;
     this.read = read;
     this.index = index;
+    this.shown = shown;
     this.info = function() {
         return name + ' ' + author;
     }
@@ -65,12 +67,47 @@ function clearInputs() {
 
 function showNewBook() {
     let name = MyLibrary[MyLibrary.length - 1].name;
-    let author = MyLibrary[MyLibrary.length - 1].name;
+    let author = MyLibrary[MyLibrary.length - 1].author;
     let numberOfPages = MyLibrary[MyLibrary.length - 1].numberOfPages;
     let read = MyLibrary[MyLibrary.length - 1].read;
+    let index = MyLibrary.length-1;
+
     const card = document.createElement('div');
     card.classList.add('card');
     content.appendChild(card);
+
+    const Name = document.createElement('p');
+    Name.classList.add('title');
+    Name.innerHTML = name;
+    card.appendChild(Name);
+
+    const Author = document.createElement('p');
+    Author.classList.add('author');
+    Author.innerHTML = "Author: " + author;
+    card.appendChild(Author);
+
+    const Pages = document.createElement('p');
+    Pages.classList.add('pages');
+    Pages.innerHTML = "Pages: " + numberOfPages;
+    card.appendChild(Pages);
+
+    const Read = document.createElement('p');
+    Read.classList.add('read');
+    Read.innerHTML = "Status: " + read;
+    card.appendChild(Read);
+
+    const deleteBook = document.createElement('button');
+    deleteBook.classList.add('deleteBook');
+    deleteBook.innerHTML = "Remove";
+    card.appendChild(deleteBook);
+
+    deleteBook.addEventListener('click', () => {
+        while (card.firstChild){
+            card.removeChild(card.lastChild);
+        }
+        card.parentNode.removeChild(card);
+        MyLibrary[index].shown = false;
+    })
 }
 
 
